@@ -13,17 +13,6 @@
         <td><%= user.name %></td>
         <td>フォロー数<%= user.active_relationships.count %></td>
         <td>フォロワー数<%= user.passive_relationships.count %></td>
-
-        <% if current_user == user %>
-          <td></td>
-        <% else %>
-          <% if current_user.following?(user) %>
-            <td><%= link_to 'フォロー外す', relationship_path(user), method: :delete %></td>
-          <% else %>
-            <td><%= link_to 'フォローする', relationships_path(id: "#{user.id}"), method: :post %></td>
-          <% end %>
-        <% end %>
-
         <td><%= link_to 'Show', user, class: "user_#{user.id}" %></td>
       </tr>
     <% end %>
