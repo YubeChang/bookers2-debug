@@ -1,14 +1,13 @@
-
 <% if book.favorited_by?(current_user) %>
-  <td>
-    <%= link_to book_favorites_path(book), method: :delete do %>
+  <td id="favorites">
+    <%= link_to book_favorites_path(book), method: :delete, local: false do %>
       <i class="fas fa-heart" style= "color:red;"></i>
       <span style= "color:red;"><%= book.favorites.count %></span>
     <% end %>
   </td>
   <% else %>
-  <td>
-    <%= link_to book_favorites_path(book), method: :post do %>
+  <td id="favorites">
+    <%= link_to book_favorites_path(book), method: :post, local: false do %>
       <i class="fas fa-heart"></i><%= book.favorites.count %>
     <% end %>
   </td>
