@@ -1,0 +1,50 @@
+[1mdiff --git a/app/views/books/show.html.erb b/app/views/books/show.html.erb[m
+[1mindex 7254476..307ec50 100644[m
+[1m--- a/app/views/books/show.html.erb[m
+[1m+++ b/app/views/books/show.html.erb[m
+[36m@@ -17,21 +17,7 @@[m
+           </td>[m
+           <td><%= link_to @book.title, @book %></td>[m
+           <td><%= @book.body %></td>[m
+[31m-[m
+[31m-          <% if @book.favorited_by?(current_user) %>[m
+[31m-            <td>[m
+[31m-              <%= link_to book_favorites_path(@book), method: :delete do %>[m
+[31m-                <i class="fas fa-heart" style= "color:red;"></i>[m
+[31m-                <span style= "color:red;"><%= @book.favorites.count %></span>[m
+[31m-              <% end %>[m
+[31m-            </td>[m
+[31m-            <% else %>[m
+[31m-            <td>[m
+[31m-              <%= link_to book_favorites_path(@book), method: :post do %>[m
+[31m-                <i class="fas fa-heart"></i><%= @book.favorites.count %>[m
+[31m-              <% end %>[m
+[31m-            </td>[m
+[31m-          <% end %>[m
+[32m+[m[32m          <%= render "favorites",book: @book %>[m
+             <td>[m
+               コメント数:<%= @book.book_comments.count %>[m
+             </td>[m
+[1mdiff --git a/app/views/users/show.html.erb b/app/views/users/show.html.erb[m
+[1mindex ee80ce6..3a94ff3 100644[m
+[1m--- a/app/views/users/show.html.erb[m
+[1m+++ b/app/views/users/show.html.erb[m
+[36m@@ -9,6 +9,18 @@[m
+     <div class='col-md-8 offset-md-1'>[m
+       <h2>Books</h2>[m
+       <%= render 'books/index',books: @books %>[m
+[32m+[m[32m      <%= render "favorites",book: @books %>[m
+[32m+[m[32m                 <td>[m
+[32m+[m[32m              コメント数<%= book.book_comments.count %>[m
+[32m+[m[32m            </td>[m
+[32m+[m[32m          <% end %>[m
+[32m+[m[32m      </tr>[m
+[32m+[m[32m    <% end %>[m
+[32m+[m[32m  </tbody>[m
+[32m+[m[32m</table>[m
+[32m+[m
+[32m+[m
+[32m+[m
+     </div>[m
+   </div>[m
+ </div>[m
