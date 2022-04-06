@@ -1,0 +1,6 @@
+<h1>User Search for "<%= "#{@model_name}" %>"</h1>
+<% if @model_name == "User" %>
+<%= render 'users/index',users: @users %>
+<% else %>
+<%= render 'books/index',books: @books %>
+<% end %>

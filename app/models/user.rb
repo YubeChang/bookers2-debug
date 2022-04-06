@@ -52,4 +52,17 @@ class User < ApplicationRecord
       profile_image.variant(resize_to_limit: [width, height]).processed
   end
 
+  #_header検索フォームのデータ受け取り処理
+  def self.looks(search_option, word)
+    if    search_option == "perfect_match"               #完全一致
+            @users = User.where("name LIKE ?", "#{word}")
+    elsif search_option == "front_match"                 #前方一致
+            @users = User.where("name LIKE ?", "#{word}%")
+    elsif search_option == "back_match"                  #後方一致
+            @users = User.where("name LIKE ?", "%#{word}")
+    else #search_option == "partial_match"               #部分一致
+            @users = User.where("name LIKE ?", "%#{word}%")
+    end
+  end
+
 end
