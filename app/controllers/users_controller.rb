@@ -6,6 +6,11 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @books = @user.books
     @book = Book.new
+    time = Time.now
+    @today = Book.where(created_at: time.in_time_zone.all_day)
+    @yesterday = Book.where(created_at: time.in_time_zone.yesterday.all_day)
+    @week = Book.where(created_at: time.in_time_zone.all_week)
+    @prev_week = Book.where(created_at: time.in_time_zone.prev_week.all_week)
   end
 
   def index
