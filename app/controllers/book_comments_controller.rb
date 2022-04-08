@@ -1,16 +1,27 @@
 class BookCommentsController < ApplicationController
 
   def create
-    book = Book.find(params[:book_id])
+    @book = Book.find(params[:book_id])
     comment = current_user.book_comments.new(comment_params)
-    comment.book_id = book.id
+    comment.book_id = @book.id
     comment.save
-    redirect_to request.referer
+    @comment_form = BookComment.new
+    respond_to do |format|
+      format.html { redirect_to request.referer }
+      format.js #デフォルト値が発火 => bookcomments/create.js.erb
+    # redirect_to request.referer
+    end
   end
 
   def destroy
     BookComment.find(params[:id]).destroy
-    redirect_to request.referer
+    @book = Book.find(params[:book_id])
+    @comment_form = BookComment.new
+    respond_to do |format|
+      format.html { redirect_to request.referer }
+      format.js # => book_comments/destroy.js.erb
+    end
+    # redirect_to request.referer
   end
 
   private

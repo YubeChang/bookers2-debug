@@ -1,0 +1,2 @@
+$("#comments_func").html("<%= escape_javascript(render('books/comments_func', book: @book, comment: @comment_form ))%>")
+$("#comments_count").html("コメント数:<%= @book.book_comments.count %>")

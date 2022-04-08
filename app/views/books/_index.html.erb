@@ -18,9 +18,10 @@
         <td><%= book.body %></td>
         <td>
         <% if book.favorited_by?(current_user) %>
-          <%= render 'unfavorites', book: book %>
+        <!--usersからのrenderだとbooks/って表記しないと読み込めない-->
+          <%= render 'books/unfavorites', book: book %>
         <% else %>
-          <%= render 'favorites',   book: book %>
+          <%= render 'books/favorites',   book: book %>
         <% end %>
         </td>
         <td>コメント数<%= book.book_comments.count %></td>

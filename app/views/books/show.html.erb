@@ -32,7 +32,7 @@
             <% end %>
             </td>
     <!--コメント数-->
-            <td>
+            <td id="comments_count">
               コメント数:<%= @book.book_comments.count %>
             </td>
     <!--投稿editリンク-->
@@ -43,7 +43,7 @@
         </tr>
       </table>
 <!--コメント一覧と機能-->
-    <%= render 'comments', book: @book,comment: @comment %>
+    <%= render 'comments_func', book: @book,comment: @comment %>
     </div>
   </div>
 </div>
