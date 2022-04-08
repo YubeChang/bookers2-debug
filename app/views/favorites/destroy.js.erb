@@ -1,2 +1,2 @@
-$("#unfavorites").html("<%= escape_javascript(render('books/favorites', book: @book ))%>")
+$("#unfavorites<%= @book.id %>").html("<%= escape_javascript(render('books/favorites', book: @book ))%>")
 <!--$("#favcount").html("< %= @book.favorites.count %>")-->
