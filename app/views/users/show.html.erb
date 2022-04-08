@@ -14,36 +14,22 @@
       <h2>投稿数の前日比・前週比</h2>
         <table class='table table-bordered',border="1">
           <tr>
-            <th>今日の投稿数</th>
-            <th>前日の投稿数</th>
-            <th>前日比</th>
+            <th>6日前</th>
+            <th>5日前</th>
+            <th>4日前</th>
+            <th>3日前</th>
+            <th>2日前</th>
+            <th>1日前</th>
+            <th>今日</th>
           </tr>
           <tr>
+            <td><%= @day6.count %></td>
+            <td><%= @day5.count %></td>
+            <td><%= @day4.count %></td>
+            <td><%= @day3.count %></td>
+            <td><%= @day2.count %></td>
+            <td><%= @day1.count %></td>
             <td><%= @today.count %></td>
-            <td><%= @yesterday.count %></td>
-            <% if @yesterday.count == 0 || @today.count == 0 %>
-            <td>-%</td>
-            <% else %>
-            <td><%= @today.count / @yesterday.count * 100 %>%
-            </td>
-            <% end %>
-          </tr>
-        </table>
-        <table class='table table-bordered',border="1">
-          <tr>
-            <th>今週の投稿数</th>
-            <th>前週の投稿数</th>
-            <th>前週比</th>
-          </tr>
-          <tr>
-            <td><%= @week.count %></td>
-            <td><%= @prev_week.count %></td>
-            <% if @prev_week.count == 0 || @week.count == 0 %>
-            <td>-%</td>
-            <% else %>
-            <td><%= @week.count / @prev_week.count * 100 %>%
-            </td>
-            <% end %>
           </tr>
         </table>
     </div>

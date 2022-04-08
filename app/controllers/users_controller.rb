@@ -6,15 +6,22 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @books = @user.books
     @book = Book.new
-    time = Time.now
+    @time = Time.now
     @today =     Book.where(user_id: @user.id,
-                         created_at: time.in_time_zone.all_day)
-    @yesterday = Book.where(user_id: @user.id,
-                         created_at: time.in_time_zone.yesterday.all_day)
-    @week =      Book.where(user_id: @user.id,
-                         created_at: time.in_time_zone.all_week)
-    @prev_week = Book.where(user_id: @user.id,
-                         created_at: time.in_time_zone.prev_week.all_week)
+                         created_at: @time.in_time_zone.all_day)
+    @day1 =      Book.where(user_id: @user.id,
+                         created_at: @time.in_time_zone.ago(1.days).all_day)
+    @day2 =      Book.where(user_id: @user.id,
+                         created_at: @time.in_time_zone.ago(2.days).all_day)
+    @day3 =      Book.where(user_id: @user.id,
+                         created_at: @time.in_time_zone.ago(3.days).all_day)
+    @day4 =      Book.where(user_id: @user.id,
+                         created_at: @time.in_time_zone.ago(4.days).all_day)
+    @day5 =      Book.where(user_id: @user.id,
+                         created_at: @time.in_time_zone.ago(5.days).all_day)
+    @day6 =      Book.where(user_id: @user.id,
+                         created_at: @time.in_time_zone.ago(6.days).all_day)
+    # 絶対間違ってる、これ過去の履歴作る時全部手書きすることになるやんけ。creaated_atでwhereする方法ないかな
   end
 
   def index
