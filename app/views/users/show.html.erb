@@ -10,8 +10,7 @@
       <h2>Books</h2>
         <%= render 'books/index',books: @books %>
 
-
-      <h2>投稿数の前日比・前週比</h2>
+      <h2>7日間分の投稿数</h2>
         <table class='table table-bordered',border="1">
           <tr>
             <th>6日前</th>
@@ -32,6 +31,7 @@
             <td><%= @today.count %></td>
           </tr>
         </table>
+
     </div>
   </div>
 </div>
