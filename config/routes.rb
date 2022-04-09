@@ -17,5 +17,6 @@ Rails.application.routes.draw do
 
   resources :relationships,  only: [:create, :destroy]
   get "searches" => "searches#search"
+  get "searches_post_day" => "searches#search_post_day"
 
 end
